@@ -1,4 +1,4 @@
-import type { Coords, KakaoApiResponse } from '../types';
+import type { Coords, KakaoApiResponse } from './kakaoTypes';
 
 const KAKAO_REST_API_KEY = process.env.KAKAO_REST_API_KEY;
 

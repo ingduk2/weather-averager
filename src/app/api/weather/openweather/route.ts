@@ -1,5 +1,5 @@
 import { getCoordsFromAddress } from '@/lib/coords/kakao';
-import { getOpenWeather } from '@/lib/weather/openweather';
+import { getCurrentOpenWeather } from '@/lib/weather/openWeather';
 import { getRequiredQueryParam } from '@/lib/request';
 import { createErrorResponse, createSuccessResponse } from '@/lib/response';
 
@@ -7,7 +7,7 @@ export async function GET(request: Request) {
   try {
     const address = getRequiredQueryParam(request, 'address');
     const coords = await getCoordsFromAddress(address);
-    const weatherResponse = await getOpenWeather(coords.lat, coords.lon);
+    const weatherResponse = await getCurrentOpenWeather(coords.lat, coords.lon);
 
     return createSuccessResponse(weatherResponse);
   } catch (error) {

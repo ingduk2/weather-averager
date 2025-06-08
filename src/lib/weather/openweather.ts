@@ -1,8 +1,8 @@
-import type { OpenWeatherApiResponse } from '../types';
+import { OpenWeatherCurrentApiResponse } from './openWeatherTypes';
 
 const OPENWEATHER_API_KEY = process.env.OPENWEATHER_API_KEY;
 
-export async function getOpenWeather(lat: string, lon: string): Promise<OpenWeatherApiResponse> {
+export async function getCurrentOpenWeather(lat: string, lon: string): Promise<OpenWeatherCurrentApiResponse> {
   const response = await getResponse(lat, lon);
   return await getOpenWeatherApiResponse(response);
 }
@@ -17,6 +17,6 @@ async function getResponse(lat: string, lon: string) {
   return res;
 }
 
-async function getOpenWeatherApiResponse(response: Response): Promise<OpenWeatherApiResponse> {
+async function getOpenWeatherApiResponse(response: Response): Promise<OpenWeatherCurrentApiResponse> {
   return await response.json();
 }

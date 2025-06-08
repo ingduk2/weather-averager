@@ -1,5 +1,5 @@
 import { getCoordsFromAddress } from '@/lib/coords/kakao';
-import { getCurrentOpenWeather } from '@/lib/weather/openweather';
+import { getCurrentOpenWeather } from '@/lib/weather/openWeather';
 import { getRequiredQueryParam } from '@/lib/request';
 import { createErrorResponse, createSuccessResponse } from '@/lib/response';
 

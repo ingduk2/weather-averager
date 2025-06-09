@@ -20,7 +20,7 @@ async function requestOpenWeatherCurrent(lat: string, lon: string): Promise<Open
     lat: lat,
     lon: lon,
     appid: OPENWEATHER_API_KEY,
-    units: 'metrics',
+    units: 'metric',
     lang: 'kr',
   });
 }

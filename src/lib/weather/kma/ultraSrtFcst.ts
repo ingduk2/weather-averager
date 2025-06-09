@@ -1,16 +1,16 @@
 import { httpGet } from '@/lib/http/axios';
 import { toGridXY } from '../../utils/dfsGridUtil';
 import { getKstNow } from '../../utils/kstTime';
-import { KmaUltraSrtFcstApiResponse } from '../kmaWeatherTypes';
+import { KmaUltraSrtFcstApiResponse } from './kmaWeatherTypes';
 import { KMA_WEATHER_API_KEY } from '@/lib/config/env';
 
 /**
  * 초단기예보조회 (ultraSrtFcst)
- * @param lat 위도 (string or number)
- * @param lon 경도 (string or number)
+ * @param lat 위도 (string)
+ * @param lon 경도 (string)
  * @returns KmaUltraSrtFcstApiResponse (API 응답 타입)
  */
-export async function getUltraSrtFcst(lat: string, lon: string): Promise<KmaUltraSrtFcstApiResponse> {
+export async function getKmaUltraSrtFcst(lat: string, lon: string): Promise<KmaUltraSrtFcstApiResponse> {
   const { x, y } = toGridXY(Number(lat), Number(lon));
   const { baseDate, baseTime } = getBaseDateTimeForUltraSrtFcst();
   const response = await requestUltraSrtFcst(x, y, baseDate, baseTime);

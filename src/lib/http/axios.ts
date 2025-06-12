@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
 
-export async function httpGet<T>(url: string, params: Record<string, string | number>): Promise<T> {
+export async function httpGet<T>(url: string, params: Record<string, string | number | boolean>): Promise<T> {
   try {
     const response = await axios.get<T>(url, {
       params: {

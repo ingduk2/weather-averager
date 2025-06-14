@@ -1,6 +1,6 @@
 import { ACCUWEATHER_API_KEY } from '@/lib/config/env';
 import { httpGet } from '@/lib/http/axios';
-import { GeoPositionSearchApiResponse } from './geoPositionSearchApiResponseTypes';
+import { GeoPositionSearchApiResponse } from './geoPositionSearchTypes';
 
 /**
  * AccuWeather LocationKey 조회

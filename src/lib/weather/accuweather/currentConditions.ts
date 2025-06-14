@@ -1,6 +1,6 @@
 import { ACCUWEATHER_API_KEY } from '@/lib/config/env';
 import { httpGet } from '@/lib/http/axios';
-import { CurrentConditionsResponse } from './currentConditionsApiResponseTypes';
+import { CurrentConditionsResponse } from './currentConditionsTypes';
 
 /**
  * [AccuWeather] Current Conditions API

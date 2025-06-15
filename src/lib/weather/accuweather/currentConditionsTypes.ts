@@ -1,4 +1,6 @@
-export interface CurrentConditionsResponse {
+import { CurrentWeather } from '../weatherTypes';
+
+export interface AccuWeatherCurrentConditionsResponse {
   LocalObservationDateTime: string; // 관측 현지 날짜 시간 (ISO 8601)
   EpochTime: number; // 유닉스 타임스탬프 (초)
   WeatherText: string; // 날씨 텍스트 설명
@@ -349,4 +351,26 @@ export interface CurrentConditionsResponse {
   };
   MobileLink: string; // 모바일 링크 URL
   Link: string; // 웹 링크 URL
+}
+
+export function mapAccuWeatherCurrentToCurrentWeather(response: AccuWeatherCurrentConditionsResponse): CurrentWeather {
+  return {
+    observationTime: response.LocalObservationDateTime,
+    temperatureCelsius: response.Temperature.Metric.Value,
+    temperatureFahrenheit: response.Temperature.Imperial.Value,
+    weatherText: response.WeatherText,
+    weatherIcon: response.WeatherIcon,
+    isDayTime: response.IsDayTime,
+    precipitationType: response.PrecipitationType,
+    precipitationHas: response.HasPrecipitation,
+    humidityPercent: response.RelativeHumidity,
+    windDirectionDegrees: response.Wind.Direction.Degrees,
+    windSpeedKph: response.Wind.Speed.Metric.Value,
+    uvIndex: response.UVIndex,
+    cloudCoverPercent: response.CloudCover,
+    visibilityKm: response.Visibility.Metric.Value,
+    pressureMB: response.Pressure.Metric.Value,
+    mobileLink: response.MobileLink,
+    link: response.Link,
+  };
 }

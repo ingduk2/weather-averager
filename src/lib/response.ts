@@ -1,11 +1,12 @@
+import { isAxiosError } from 'axios';
 import { CustomError } from './error/error';
 
-interface SuccessResponse<T> {
+export interface SuccessResponse<T> {
   success: true;
   data: T;
 }
 
-interface ErrorResponse {
+export interface ErrorResponse {
   success: false;
   error: {
     message: string;
@@ -38,4 +39,34 @@ function createResponse(body: unknown, statusCode: number) {
     status: statusCode,
     headers: { 'Content-Type': 'application/json; charset=utf-8' },
   });
+}
+
+export function toErrorResponse(error: unknown): ErrorResponse {
+  if (isAxiosError(error)) {
+    return {
+      success: false,
+      error: {
+        message: error.message ?? '알 수 없는 에러',
+        statusCode: error.response?.status ?? 500,
+      },
+    };
+  }
+
+  if (error instanceof Error) {
+    return {
+      success: false,
+      error: {
+        message: error.message,
+        statusCode: 500,
+      },
+    };
+  }
+
+  return {
+    success: false,
+    error: {
+      message: '알 수 없는 에러',
+      statusCode: 500,
+    },
+  };
 }

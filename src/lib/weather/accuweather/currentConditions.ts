@@ -1,20 +1,22 @@
 import { ACCUWEATHER_API_KEY } from '@/lib/config/env';
 import { httpGet } from '@/lib/http/axios';
-import { CurrentConditionsResponse } from './currentConditionsTypes';
+import { AccuWeatherCurrentConditionsResponse } from './currentConditionsTypes';
 
 /**
  * [AccuWeather] Current Conditions API
  * @param locationKey
  * @returns
  */
-export async function getAccuWeatherCurrentConditions(locationKey: string): Promise<CurrentConditionsResponse> {
+export async function getAccuWeatherCurrentConditions(
+  locationKey: string
+): Promise<AccuWeatherCurrentConditionsResponse> {
   const response = await request(locationKey);
   return response;
 }
 
-async function request(locationKey: string): Promise<CurrentConditionsResponse> {
+async function request(locationKey: string): Promise<AccuWeatherCurrentConditionsResponse> {
   const url = `https://dataservice.accuweather.com/currentconditions/v1/${locationKey}`;
-  const response = await httpGet<CurrentConditionsResponse[]>(url, {
+  const response = await httpGet<AccuWeatherCurrentConditionsResponse[]>(url, {
     apikey: ACCUWEATHER_API_KEY,
     details: true,
   });

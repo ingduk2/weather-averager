@@ -1,8 +1,8 @@
 import { httpGet } from '@/lib/http/axios';
 import { toGridXY } from '../../utils/dfsGridUtil';
 import { getKstNow } from '../../utils/kstTime';
-import { KmaVilageFcstApiResponse } from './kmaWeatherTypes';
 import { KMA_WEATHER_API_KEY } from '@/lib/config/env';
+import { KmaVilageFcstApiResponse } from './vilageFcstTypes';
 
 /**
  * 단기예보조회 (vilageFcst)

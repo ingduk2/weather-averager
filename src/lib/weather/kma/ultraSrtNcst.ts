@@ -1,8 +1,8 @@
 import { httpGet } from '@/lib/http/axios';
 import { toGridXY } from '../../utils/dfsGridUtil';
 import { getKstNow } from '../../utils/kstTime';
-import { KmaUltraSrtNcstApiResponse } from './kmaWeatherTypes';
 import { KMA_WEATHER_API_KEY } from '@/lib/config/env';
+import { KmaUltraSrtNcstApiResponse } from './ultraSrtNcstTypes';
 
 /**
  * 초단기실황조회 (ultraSrtNcst)

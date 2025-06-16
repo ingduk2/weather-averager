@@ -1,6 +1,6 @@
 'use client';
 
-import { fetchAccuWeatherCurrent } from '@/lib/weather/accuweather/client';
+import { fetchKmaWeatherCurrent } from '@/lib/weather/kma/client';
 import { CurrentWeather } from '@/lib/weather/weatherTypes';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
@@ -8,14 +8,14 @@ import React, { useEffect, useState } from 'react';
 const WeatherIconUrl = (iconNumber: number) =>
   `https://developer.accuweather.com/sites/default/files/${iconNumber < 10 ? '0' + iconNumber : iconNumber}-s.png`;
 
-const AccuWeatherCurrentComponent = ({ address }: { address: string }) => {
+const KmaWeatherCurrentComponent = ({ address }: { address: string }) => {
   const [weather, setWeather] = useState<CurrentWeather | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     setLoading(true);
-    fetchAccuWeatherCurrent(address)
+    fetchKmaWeatherCurrent(address)
       .then((res) => {
         if (res.success) {
           setWeather(res.data);
@@ -34,18 +34,19 @@ const AccuWeatherCurrentComponent = ({ address }: { address: string }) => {
       .finally(() => setLoading(false));
   }, [address]);
 
-  if (loading) return <div>로딩중...</div>;
-  if (error)
+  if (loading || error || !weather) {
     return (
       <div style={{ border: '1px solid #ccc', padding: 16, maxWidth: 320 }}>
-        <h2>🌤️ AccuWeather 현재 날씨</h2>에러: {error}
+        <h2>🌤️ KMA 기상청 현재 날씨</h2>
+        {loading && <p>로딩중...</p>}
+        {error && <p>에러: {error}</p>}
       </div>
     );
-  if (!weather) return null;
+  }
 
   return (
     <div style={{ border: '1px solid #ccc', padding: 16, maxWidth: 320 }}>
-      <h2>🌤️ AccuWeather 현재 날씨</h2>
+      <h2>🌤️ KMA 기상청 현재 날씨</h2>
       <p>
         <strong>관측 시간:</strong> {new Date(weather.observationTime).toLocaleString()}
       </p>
@@ -93,4 +94,4 @@ const AccuWeatherCurrentComponent = ({ address }: { address: string }) => {
   );
 };
 
-export default AccuWeatherCurrentComponent;
+export default KmaWeatherCurrentComponent;

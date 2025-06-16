@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import AccuWeatherCurrentComponent from '../components/AccuWeatherCurrentComponent';
+import KmaWeatherCurrentComponent from '../components/KmaWeatherCurrentComponent';
 
 export default function Page() {
   const [address, setAddress] = useState('');
@@ -29,6 +30,7 @@ export default function Page() {
       </form>
 
       {address && <AccuWeatherCurrentComponent address={address} />}
+      {address && <KmaWeatherCurrentComponent address={address} />}
     </div>
   );
 }

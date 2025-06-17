@@ -51,7 +51,6 @@ export function mapKmaUltraSrtNcstToCurrentWeather(items: KmaUltraSrtNcstItem[])
   )}:${baseTime.slice(2, 4)}:00`;
 
   const temperatureCelsius = getFloat(map, KmaUltraSrtNcstCategory.TEMPERATURE);
-  const temperatureFahrenheit = parseFloat(((temperatureCelsius * 9) / 5 + 32).toFixed(1));
   const humidityPercent = getFloat(map, KmaUltraSrtNcstCategory.HUMIDITY);
   const windDirectionDegrees = getFloat(map, KmaUltraSrtNcstCategory.WIND_DIRECTION);
   const windSpeedKph = getFloat(map, KmaUltraSrtNcstCategory.WIND_SPEED);
@@ -64,7 +63,6 @@ export function mapKmaUltraSrtNcstToCurrentWeather(items: KmaUltraSrtNcstItem[])
   return {
     observationTime,
     temperatureCelsius,
-    temperatureFahrenheit,
     weatherText: getWeatherTextFromSkyAndPty(skyCode, precipitationCode),
     weatherIcon: getWeatherIconCodeFromSkyAndPty(skyCode, precipitationCode),
     isDayTime: isDay(baseTime),
@@ -73,11 +71,5 @@ export function mapKmaUltraSrtNcstToCurrentWeather(items: KmaUltraSrtNcstItem[])
     humidityPercent,
     windDirectionDegrees,
     windSpeedKph,
-    uvIndex: -1,
-    cloudCoverPercent: -1,
-    visibilityKm: -1,
-    pressureMB: -1,
-    mobileLink: '',
-    link: '',
   };
 }

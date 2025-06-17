@@ -357,7 +357,6 @@ export function mapAccuWeatherCurrentToCurrentWeather(response: AccuWeatherCurre
   return {
     observationTime: response.LocalObservationDateTime,
     temperatureCelsius: response.Temperature.Metric.Value,
-    temperatureFahrenheit: response.Temperature.Imperial.Value,
     weatherText: response.WeatherText,
     weatherIcon: response.WeatherIcon,
     isDayTime: response.IsDayTime,
@@ -366,11 +365,5 @@ export function mapAccuWeatherCurrentToCurrentWeather(response: AccuWeatherCurre
     humidityPercent: response.RelativeHumidity,
     windDirectionDegrees: response.Wind.Direction.Degrees,
     windSpeedKph: response.Wind.Speed.Metric.Value,
-    uvIndex: response.UVIndex,
-    cloudCoverPercent: response.CloudCover,
-    visibilityKm: response.Visibility.Metric.Value,
-    pressureMB: response.Pressure.Metric.Value,
-    mobileLink: response.MobileLink,
-    link: response.Link,
   };
 }

@@ -55,7 +55,7 @@ const KmaWeatherCurrentComponent = ({ address }: { address: string }) => {
         <strong>날씨:</strong> {weather.weatherText}
       </p>
       <p>
-        <strong>온도:</strong> {weather.temperatureCelsius}°C / {weather.temperatureFahrenheit}°F
+        <strong>온도:</strong> {weather.temperatureCelsius}°C
       </p>
       <p>
         <strong>습도:</strong> {weather.humidityPercent}%
@@ -68,27 +68,6 @@ const KmaWeatherCurrentComponent = ({ address }: { address: string }) => {
       </p>
       <p>
         <strong>풍속:</strong> {weather.windSpeedKph} km/h
-      </p>
-      <p>
-        <strong>자외선 지수:</strong> {weather.uvIndex}
-      </p>
-      <p>
-        <strong>구름 덮임:</strong> {weather.cloudCoverPercent}%
-      </p>
-      <p>
-        <strong>가시거리:</strong> {weather.visibilityKm} km
-      </p>
-      <p>
-        <strong>기압:</strong> {weather.pressureMB} hPa
-      </p>
-      <p>
-        <a href={weather.mobileLink} target="_blank" rel="noopener noreferrer">
-          모바일 링크
-        </a>{' '}
-        |{' '}
-        <a href={weather.link} target="_blank" rel="noopener noreferrer">
-          웹 링크
-        </a>
       </p>
     </div>
   );

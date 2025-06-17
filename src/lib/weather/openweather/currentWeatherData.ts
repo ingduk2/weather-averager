@@ -1,6 +1,6 @@
 import { OPENWEATHER_API_KEY } from '@/lib/config/env';
-import { OpenWeatherCurrentApiResponse } from './openWeatherTypes';
 import { httpGet } from '@/lib/http/axios';
+import { OpenWeatherCurrentApiResponse } from './currentWeatherDataTypes';
 
 /**
  * OpenWeatherMap (Current Weather Data)

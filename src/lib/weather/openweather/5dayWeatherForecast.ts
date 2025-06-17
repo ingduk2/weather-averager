@@ -1,6 +1,6 @@
 import { OPENWEATHER_API_KEY } from '@/lib/config/env';
-import { OpenWeather5DayForecastApiResponse } from './openWeatherTypes';
 import { httpGet } from '@/lib/http/axios';
+import { OpenWeather5DayForecastApiResponse } from './5dayWeatherForecastTypes';
 
 /**
  * OpenWeatherMap (5 day weather forecast)

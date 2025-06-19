@@ -45,7 +45,7 @@ const KmaWeatherCurrentComponent = ({ address }: { address: string }) => {
   }
 
   return (
-    <div style={{ border: '1px solid #ccc', padding: 16, maxWidth: 320 }}>
+    <div style={{ border: '1px solid #ccc', padding: 16 }}>
       <h2>🌤️ KMA 기상청 현재 날씨</h2>
       <p>
         <strong>관측 시간:</strong> {new Date(weather.observationTime).toLocaleString()}

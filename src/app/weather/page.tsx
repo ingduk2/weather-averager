@@ -30,9 +30,13 @@ export default function Page() {
         </button>
       </form>
 
-      {address && <AccuWeatherCurrentComponent address={address} />}
-      {address && <KmaWeatherCurrentComponent address={address} />}
-      {address && <OpenWeatherCurrentComponent address={address} />}
+      {address && (
+        <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem', marginTop: '1rem' }}>
+          <AccuWeatherCurrentComponent address={address} />
+          <KmaWeatherCurrentComponent address={address} />
+          <OpenWeatherCurrentComponent address={address} />
+        </div>
+      )}
     </div>
   );
 }
